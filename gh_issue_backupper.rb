@@ -42,7 +42,7 @@ client.auto_paginate = true
 # get all issues (includes pull requests) per repository
 repo_list.each do |repo_name|
   # create directory per repositories
-  directory_name = repo_name[%r{\/\w*}].delete('/')
+  directory_name = repo_name[%r{\/(\w|-|_)*}].delete('/')
   directory_path = "#{JSON_FILE_PATH}#{directory_name}/"
   puts "make directory #{directory_path}..."
   Dir.mkdir(directory_path) unless FileTest.exist?(directory_path)
